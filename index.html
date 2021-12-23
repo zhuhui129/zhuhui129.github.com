@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计算器</title>
+		<style>
+			h1{
+				color: #495678;
+				font-size: 30px;	
+				margin-top: 70px;/* 上边距 */
+				text-align: center;/* 居中显示 */
+			}
+			.box{
+				background-color: #495678;
+				width: 280px;
+				border-radius: 25px; /*添加圆角边框*/
+				margin: 40px auto;
+				padding: 40px 0 30px 40px; /* 左 右 上 下 */
+			}
+			.other{
+				outline: none;  /*轮廓样式*/
+				cursor: pointer;  /*鼠标指针样式*/
+				font-size: 20px;
+				height: 45px;
+				width: 45px;
+				margin: 5px 0 5px 10px;
+				border-radius: 50%;
+				background-color: #e3844c;
+				color: #dededc;
+				border: none; /* 清除自带边框 */
+			}
+			.display{
+				width: 165px;
+				height: 47px;
+				background-color: #98d1dc;
+				border-radius: 25px;
+				font-size: 20px;
+				color: #dededc;
+				text-align: right;
+				padding-right: 10px;
+				margin-left: 10px;
+				border: none;
+			}
+			.number{
+				/* outline: none;  /*轮廓样式*/ */
+				cursor: pointer;  /*鼠标指针样式*/
+				font-size: 20px;
+				height: 45px;
+				width: 45px;
+				border-radius: 50%;
+				margin: 5px 0 5px 10px;
+				background-color: #72778b;
+				color: #dededc;
+				border: none; /* 清除自带边框 */
+			}
+			.operator{
+				outline: none;  /*轮廓样式*/
+				cursor: pointer;  /*鼠标指针样式*/
+				font-size: 20px;
+				height: 45px;
+				width: 45px;
+				margin: 5px 0 5px 10px;
+				border-radius: 50%;
+				background-color: #dededc;
+				color: #72778b;
+				border: none;
+			}
+			/* 点击时添加样式 */
+			.other:active,.number:active,.operator:active{
+			  	transform: translateY(2px);  /*定义Y轴方向上的转换*/
+				-webkit-transform: translateY(2px);
+			  	-ms-transform: translateY(2px);
+			  	-moz-tranform: translateY(2px);
+			}
+		</style>
+	</head>
+	<body>
+		<h1>计算器</h1>
+		<div class="box">
+			<input type="button" class="other" value="C" onClick="clearValue()">
+			<input type="text" class="display" id="display">
+			<br>
+			<input type="button" class="number" value="7" onClick="getValue(this.value)">
+			<input type="button" class="number" value="8" onClick="getValue(this.value)">
+			<input type="button" class="number" value="9" onClick="getValue(this.value)">
+			<input type="button" class="operator" value="+" onClick="getValue(this.value)">
+			<br>
+			<input type="button" class="number" value="4" onClick="getValue(this.value)">
+			<input type="button" class="number" value="5" onClick="getValue(this.value)">
+			<input type="button" class="number" value="6" onClick="getValue(this.value)">
+			<input type="button" class="operator" value="*" onClick="getValue(this.value)">
+			<br>
+			<input type="button" class="number" value="1" onClick="getValue(this.value)">
+			<input type="button" class="number" value="2" onClick="getValue(this.value)">
+			<input type="button" class="number" value="3" onClick="getValue(this.value)">
+			<input type="button" class="operator" value="-" onClick="getValue(this.value)">
+			<br>
+			<input type="button" class="number" value="0" onClick="getValue(this.value)">
+			<input type="button" class="operator" value="." onClick="getValue(this.value)">
+			<input type="button" class="operator" value="/" onClick="getValue(this.value)">
+			<input type="button" class="other" value="=" onClick="calculate()">
+		</div>
+	</body>
+	<script>
+		//获取点击按钮的值
+		function getValue(value){
+			//更新文本框的value值，先获取当前文本框的值，将其与当前按钮的值拼接
+			document.getElementById("display").value+=value;
+		}
+		//获取点击按钮的值
+		function calculate(){
+			//定义var变量，获取当前文本框的内容，如‘3*5’
+			var result = document.getElementById("display").value; 
+			//调用JS提供的eval()函数进行数字运算，计算result字符串‘3*5’
+			document.getElementById("display").value = eval(result);//计算结果返回给‘display’id文本框
+		}
+		//清空显示
+		function clearValue(){
+			//对display文本框的value值赋值为空
+			document.getElementById("display").value = "";
+		}
+	</script>
+</html>
